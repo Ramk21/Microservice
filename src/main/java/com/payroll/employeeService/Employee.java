@@ -1,6 +1,6 @@
 package com.payroll.employeeService;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,22 +8,34 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-@Table(name="EMPLOYEE")
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
+@Table(name="employee")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Employee {
 	@Id
-	@Column(name="Emp_Id")
-	private int empId;
-	@Column(name="First_Name")
+	@Column(name="emp_id")
+	private Integer empId;
+	@Column(name="first_name")
 	private String firstName;
-	@Column(name="Last_Name")
+	@Column(name="last_name")
 	private String lastName;
-	@Column(name="Joining_Date")
+	@Column(name="doj")
 	private Date joingDate;
 	
 	
 	
-	public Employee(int empId, String firstName, String lastName, Date joingDate) {
+	/*public Employee(Integer empId, String firstName, String lastName, Date joingDate) {
 		super();
 		this.empId = empId;
 		this.firstName = firstName;
@@ -33,10 +45,10 @@ public class Employee {
 	
 	public Employee() {}
 	
-	public int getEmpId() {
+	public Integer getEmpId() {
 		return empId;
 	}
-	public void setEmpId(int empId) {
+	public void setEmpId(Integer empId) {
 		this.empId = empId;
 	}
 	public String getFirstName() {
@@ -59,5 +71,5 @@ public class Employee {
 	}
 	
 	
-	
+*/	
 }
